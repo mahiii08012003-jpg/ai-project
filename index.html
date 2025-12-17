@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PCA Noise Removal</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 40px; }
+        .container { margin-top: 25px; }
+        img { margin: 10px; border-radius: 10px; }
+    </style>
+</head>
+
+<body>
+    <h1>PCA Noise Removal Website</h1>
+
+    <form action="/process" method="POST" enctype="multipart/form-data">
+        <label>Upload Noisy Image:</label><br><br>
+        <input type="file" name="image" required><br><br>
+
+        <label>Select Number of PCA Components:</label><br>
+        <input type="number" name="components" value="50" min="1" max="200"><br><br>
+
+        <button type="submit">Remove Noise</button>
+    </form>
+
+    {% if original %}
+    <div class="container">
+        <h2>Results</h2>
+        <div>
+            <h3>Original Image</h3>
+            <img src="{{ original }}" width="300">
+        </div>
+
+        <div>
+            <h3>PCA Restored Image</h3>
+            <img src="{{ restored }}" width="300">
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
